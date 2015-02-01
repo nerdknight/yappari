@@ -1750,6 +1750,32 @@ void Connection::sendUnsubscribeHim(QString jid)
     counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
 }
 
+/**
+    Sends a notification to change user status.
+
+    @param status           New status
+*/
+void Connection::sendChangeStatus(QString status)
+{
+    QString id = makeId("notification_");
+    AttributeList attrs;
+
+    ProtocolTreeNode notificationNode("notification");
+    attrs.insert("offline","0");
+    attrs.insert("id",id);
+    attrs.insert("notify",push_name);
+    attrs.insert("type","status");
+    notificationNode.setAttributes(attrs);
+
+    ProtocolTreeNode setNode("set");
+    setNode.setData(status.toUtf8());
+    notificationNode.addChild(setNode);
+
+    int bytes = out->write(notificationNode);
+    counters->increaseCounter(DataCounters::ProtocolBytes, 0, bytes);
+}
+
+
 /** ***********************************************************************
  ** Picture handling methods
  **/

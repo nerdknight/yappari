@@ -174,6 +174,9 @@ public slots:
     // Sends a query to request a subscription remove to a user
     void sendUnsubscribeHim(QString jid);
 
+    // Sends a notification to change user status
+    void sendChangeStatus(QString status);
+
 
     /** ***********************************************************************
      ** Picture handling

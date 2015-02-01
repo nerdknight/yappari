@@ -1031,9 +1031,7 @@ void Client::syncFinished()
 
 void Client::changeStatus(QString newStatus)
 {
-    FMessage message("s.us",newStatus,"");
-    message.type = FMessage::BodyMessage;
-    queueMessage(message);
+    connection->sendChangeStatus(newStatus);
 }
 
 void Client::changeUserName(QString newUserName)
