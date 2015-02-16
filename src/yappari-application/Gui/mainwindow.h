@@ -151,6 +151,7 @@ private:
 
 signals:
     void sendMessage(FMessage message);
+    void dequeueMessage(FMessage message);
     void sendNotification(QString name, FMessage message);
     void activeChatChanged(QString jid);
     void sendSetGroupSubject(QString gjid, QString newSubject);

@@ -120,6 +120,7 @@ signals:
     void messageRead(FMessage message);
     void updateLastDir(int waType, QString dir);
     void forwardMessage(FMessage message);
+    void dequeueMessage(FMessage message);
 
 private:
     bool isPeerComposing;

@@ -289,6 +289,9 @@ ChatWindow *MainWindow::createChatWindow(Contact& contact, bool show)
         connect(chat,SIGNAL(sendMessage(FMessage)),
                 this,SLOT(sendMessageFromChat(FMessage)));
 
+        connect(chat,SIGNAL(dequeueMessage(FMessage)),
+                this,SLOT(dequeueMessage(FMessage)));
+
         connect(chat,SIGNAL(destroyed(QObject *)),
                 this,SLOT(deleteChat(QObject *)));
 
@@ -527,6 +530,11 @@ void MainWindow::sendMessageFromChat(FMessage message)
         model->sort(0,Qt::DescendingOrder);
     }
     emit sendMessage(message);
+}
+
+void MainWindow::dequeueMessage(FMessage message)
+{
+    emit dequeueMessage(message);
 }
 
 void MainWindow::sendSetGroupSubjectFromChat(QString gjid, QString newSubject)

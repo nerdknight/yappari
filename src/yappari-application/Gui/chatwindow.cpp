@@ -942,4 +942,5 @@ void ChatWindow::deleteMessage(FMessage message)
     {
         logger.deleteMessage(message);
     }
+    emit dequeueMessage(message);
 }

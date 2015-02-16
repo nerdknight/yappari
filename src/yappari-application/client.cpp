@@ -246,6 +246,9 @@ Client::Client(bool minimized, QObject *parent) : QObject(parent)
     connect(mainWin,SIGNAL(sendMessage(FMessage)),
             this,SLOT(queueMessage(FMessage)));
 
+    connect(mainWin,SIGNAL(dequeueMessage(FMessage)),
+            this,SLOT(dequeueMessage(FMessage)));
+
     connect(mainWin,SIGNAL(sendSetGroupSubject(QString,QString)),
             this,SLOT(sendSetGroupSubject(QString,QString)));
 
@@ -1240,6 +1243,22 @@ void Client::queueMessage(FMessage message)
     // OR CREATE A NEW QUEUE CLASS
     // DON'T USE TIMERS <-- good idea I think.
 }
+
+void Client::dequeueMessage(FMessage message)
+{
+    pendingMessagesMutex.lock();
+    QListIterator<FMessage> i(pendingMessagesQueue);
+    while(i.hasNext())
+    {
+        FMessage msg = i.next();
+        if(msg.key == message.key)
+        {
+            pendingMessagesQueue.erase(i);
+        }
+    }
+    pendingMessagesMutex.unlock();
+}
+
 
 void Client::ShowWindow()
 {

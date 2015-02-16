@@ -284,6 +284,7 @@ public slots:
     void read();
     void keepAlive();
     void queueMessage(FMessage message);
+    void dequeueMessage(FMessage message);
     void sendMessagesInQueue();
     void sendGetStatus();
     void registrationSuccessful(QVariantMap result);
