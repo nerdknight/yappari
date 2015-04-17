@@ -60,6 +60,7 @@ SOURCES += main.cpp \
     client.cpp \
     Whatsapp/ioexception.cpp \
     Whatsapp/protocolexception.cpp \
+    Whatsapp/receipt.cpp \
     Whatsapp/warequest.cpp \
     Whatsapp/waexistsrequest.cpp \
     Whatsapp/phonereg.cpp \
@@ -148,7 +149,8 @@ SOURCES += main.cpp \
     libjpeg/jpeg-marker.c \
     libjpeg/jpeg-data.c \
     libjpeg/exif-i18n.c \
-    Dbus/dbusnokiaossobrowserif.cpp
+    Dbus/dbusnokiaossobrowserif.cpp \
+    Whatsapp/watokendictionary.cpp
 
 OTHER_FILES += \
     qtc_packaging/debian_fremantle/rules \
@@ -176,6 +178,7 @@ HEADERS += \
     client.h \
     Whatsapp/ioexception.h \
     Whatsapp/protocolexception.h \
+    Whatsapp/receipt.h \
     Whatsapp/warequest.h \
     Whatsapp/waexistsrequest.h \
     Whatsapp/phonereg.h \
@@ -267,7 +270,9 @@ HEADERS += \
     libjpeg/jpeg-marker.h \
     libjpeg/jpeg-data.h \
     libjpeg/exif-i18n.h \
-    Dbus/dbusnokiaossobrowserif.h
+    Dbus/dbusnokiaossobrowserif.h \
+    Whatsapp/watokendictionary.h
+
 
 FORMS += \
     Gui/ui/mainwindow.ui \
